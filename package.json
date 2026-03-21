@@ -1,0 +1,20 @@
+{
+  "name": "chat-o-friend",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "scripts": {
+    "start:api": "npm run start --workspace=apps/api",
+    "start:frontend": "npm run start --workspace=apps/frontend",
+    "build:api": "npm run build --workspace=apps/api",
+    "build:frontend": "npm run build --workspace=apps/frontend",
+    "test:api": "npm run test --workspace=apps/api",
+    "test:frontend": "npm run test --workspace=apps/frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
