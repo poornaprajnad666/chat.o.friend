@@ -1,0 +1,22 @@
+.join-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top left, var(--primary-light), transparent),
+              radial-gradient(circle at bottom right, var(--secondary-light), transparent);
+}
+
+.join-screen h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.join-screen p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,74 @@
+<div class="theme-selector-container">
+  <div class="custom-dropdown">
+    <div class="dropdown-trigger">
+      <span class="theme-circle" [ngClass]="themeService.currentTheme()"></span>
+      {{ themeService.currentTheme() | titlecase }}
+      <svg width="12" height="12" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+    </div>
+    <div class="dropdown-menu">
+      <div *ngFor="let t of themes" class="dropdown-item" (click)="themeService.setTheme(t)">
+        <span class="theme-circle" [ngClass]="t"></span>
+        {{ t | titlecase }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="chat-screen animate-fade-in">
+  <aside class="sidebar glass-panel">
+    <div class="sidebar-header">
+      <h3>Online Users</h3>
+      <span class="user-count">{{ users().length }} online</span>
+    </div>
+    <ul class="user-list">
+      <li *ngFor="let user of users()" class="user-item">
+        <div class="avatar">{{ user.name.charAt(0).toUpperCase() }}</div>
+        <span class="user-name">{{ user.name }}</span>
+        <span class="status-indicator"></span>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+        <button class="logout-btn" (click)="logout()">Leave Chat</button>
+    </div>
+  </aside>
+
+  <main class="chat-area">
+    <header class="chat-header glass-panel">
+      <div class="header-info">
+        <h2>General Chat</h2>
+        <p>Logged in as: <strong>{{ currentUser() }}</strong></p>
+      </div>
+    </header>
+
+    <div class="messages-container" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+      <div 
+        *ngFor="let msg of messages()" 
+        class="message-wrapper" 
+        [ngClass]="{'own-message': msg.user === currentUser(), 'system-message': msg.user === 'System'}"
+      >
+        <div class="message glass-card">
+          <div class="message-info">
+            <span class="message-user">{{ msg.user }}</span>
+            <span class="message-time">{{ msg.time | date:'shortTime' }}</span>
+          </div>
+          <div class="message-text">{{ msg.text }}</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="chat-footer glass-panel">
+      <div class="input-group">
+        <input 
+          [(ngModel)]="messageText" 
+          (keyup.enter)="sendMessage()" 
+          placeholder="Type a message..."
+        />
+        <button (click)="sendMessage()" [disabled]="!messageText.trim()">
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </main>
+</div>
