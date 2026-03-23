@@ -1,101 +1,105 @@
-# ChatOFriend
+# 🚀 ChatOFriend — Connect with Style
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+![ChatOFriend UI Preview](file:///C:/Users/Poorna%20Prajna%20D/.gemini/antigravity/brain/def0e81e-5054-423f-ae0c-c118bbd25f13/chat_o_friend_ui_preview_1774291847382.png)
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+**ChatOFriend** is a premium, real-time chat application designed with a focus on modern aesthetics and seamless user experience. Built on a powerful Nx monorepo architecture, it combines the robustness of Angular with the real-time capabilities of Socket.io and Node.js.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+---
 
-## Run tasks
+## ✨ Key Features
 
-To run the dev server for your app, use:
+- **🌐 Real-Time Connectivity**: Experience instantaneous messaging powered by Socket.io, ensuring zero-latency communication.
+- **🎨 Multi-Theme Experience**: Switch between four stunning, curated themes:
+  - 🌌 **Midnight**: Deep blues and purples for a classic dark mode.
+  - 💖 **Neon**: Vibrant pinks and cyan for a high-energy look.
+  - 🍃 **Emerald**: Calming greens for a focused environment.
+  - 🌅 **Sunset**: Warm ambers and browns for a cozy feel.
+- **💎 Glassmorphic UI**: A state-of-the-art interface featuring backdrop blurs, soft shadows, and semi-transparent panels.
+- **👥 Active Presence**: Real-time user list to see who's online at a glance.
+- **⚡ Modern Architecture**: Leverages Nx for a scalable monorepo setup, sharing logic and maintaining consistency.
+- **💅 Premium Polish**: Custom animations, floating objects on the landing page, and responsive design across all devices.
 
-```sh
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | [Angular 17+](https://angular.io/), [Signals](https://angular.io/guide/signals), [Vanilla CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) (Glassmorphism) |
+| **Backend** | [Node.js](https://nodejs.org/), [Express](https://expressjs.com/), [Socket.io](https://socket.io/) |
+| **Persistence**| [MongoDB](https://www.mongodb.com/) via [Mongoose](https://mongoosejs.com/) |
+| **Monorepo** | [Nx Dev Tools](https://nx.dev/) |
+
+---
+
+## 📂 Project Structure
+
+```text
+chat.o.friend/
+├── apps/
+│   ├── frontend/         # Angular application
+│   └── api/              # Node.js Express server
+├── libs/                 # Shared libraries (future use)
+└── package.json          # Root workspace configuration
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [MongoDB](https://www.mongodb.com/) (Local or Atlas instance)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/chat-o-friend.git
+   cd chat-o-friend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure Environment:
+   Create a `.env` file in `apps/api/` with:
+   ```env
+   PORT=3000
+   MONGODB_URI=your_mongodb_connection_string
+   ```
+
+### Running the Application
+
+To start both the frontend and backend concurrently:
+
+```bash
+# Start Frontend
 npx nx serve frontend
+
+# Start Backend
+npx nx serve api
 ```
 
-To create a production bundle:
+The application will be available at `http://localhost:4200` and the API at `http://localhost:3000`.
 
-```sh
-npx nx build frontend
-```
+---
 
-To see all available targets to run for a project, run:
+## 🧪 Development Workflow
 
-```sh
-npx nx show project frontend
-```
+- **Generate Component**: `npx nx g @nx/angular:component my-component --project=frontend`
+- **Build for Production**: `npx nx build frontend --prod`
+- **Run Tests**: `npx nx test frontend`
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+---
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 📄 License
 
-## Add new projects
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+---
 
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/angular:app demo
-```
-
-To generate a new library, use:
-
-```sh
-npx nx g @nx/angular:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Built with ❤️ by [Poorna Prajna D](https://github.com/poornaprajnad666)

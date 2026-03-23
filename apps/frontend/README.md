@@ -1,59 +1,57 @@
-# Frontend
+# 🎨 ChatOFriend — Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.3.
+This is the Angular-based frontend application for **ChatOFriend**, a premium real-time chat experience.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Getting Started
 
+This application is part of an Nx monorepo. It is recommended to run commands from the root directory.
+
+### Serving the Application
 ```bash
-ng serve
+npx nx serve frontend
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+### Building for Production
 ```bash
-ng generate component component-name
+npx nx build frontend
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🛠️ Key Technologies
 
-## Building
+- **Angular 17+**: Utilizing standalone components and signals for efficient state management.
+- **Vanilla CSS**: Custom styling with CSS Variables for theme support.
+- **Socket.io-Client**: Handling real-time communication with the backend.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 🎨 Design System
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The application uses a custom-built design system focused on **Glassmorphism**. Key tokens are defined in `src/styles.css`:
 
-## Running unit tests
+- `--primary`: Main accent color.
+- `--secondary`: Sub-accent for gradients.
+- `--glass-bg`: Semi-transparent background for cards.
+- `--glass-border`: Thin border for the glass effect.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Themes
+Themes are applied via the `data-theme` attribute on the `body` tag:
+- `midnight`
+- `neon`
+- `emerald`
+- `sunset`
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+## 📁 Folder Structure
 
-For end-to-end (e2e) testing, run:
+- `src/app/components/`: UI components (Chat, Landing).
+- `src/app/services/`: Core business logic and shared state (Chat, Theme).
+- `src/styles.css`: Global styles and design tokens.
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For full project documentation, see the [Root README](../../README.md).
