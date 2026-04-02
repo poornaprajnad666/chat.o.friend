@@ -23,7 +23,8 @@ export class ChatService {
 
   constructor() {
     const isProd = window.location.hostname !== 'localhost';
-    const socketUrl = isProd ? window.location.origin : 'http://localhost:3000';
+    // REPLACE 'https://your-new-backend.railway.app' with your actual Render/Railway URL after deployment
+    const socketUrl = isProd ? 'https://your-new-backend.railway.app' : 'http://localhost:3000';
     this.socket = io(socketUrl);
 
     this.socket.on('userList', (userList: User[]) => {
