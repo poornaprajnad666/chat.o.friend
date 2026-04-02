@@ -16,7 +16,6 @@
   ],
   "functions": {
     "apps/api/src/main.js": {
-      "runtime": "vercel-node@latest",
       "includeFiles": "apps/api/src/**"
     }
   }
