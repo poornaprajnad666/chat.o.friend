@@ -12,7 +12,8 @@
     "build:api": "npm run build --workspace=apps/api",
     "build:frontend": "npm run build --workspace=apps/frontend",
     "test:api": "npm run test --workspace=apps/api",
-    "test:frontend": "npm run test --workspace=apps/frontend"
+    "test:frontend": "npm run test --workspace=apps/frontend",
+    "build": "npm run build:frontend"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
