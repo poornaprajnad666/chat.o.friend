@@ -13,15 +13,26 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Chat API is running' });
 });
 
-const server = http.createServer(app);
-const io = new Server(server, {
+const io = new Server({
   cors: {
     origin: '*',
     methods: ['GET', 'POST']
   },
-  // Vercel friendly socket.io options
-  transports: ['websocket', 'polling']
+  transports: ['websocket', 'polling'],
+  // Increase compatibility for serverless
+  allowEIO3: true
 });
+
+// Explicitly handle socket.io requests for Vercel
+app.all('/socket.io*', (req, res) => {
+  io.engine.handleRequest(req, res);
+});
+
+const server = http.createServer(app);
+// Attach io to the server for local development (non-production)
+if (process.env.NODE_ENV !== 'production') {
+  io.attach(server);
+}
 
 // In-memory user storage for real-time (will reset on server restart)
 const users = new Map();
