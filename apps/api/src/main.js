@@ -1,7 +1,6 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
-const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -9,22 +8,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Health check for Vercel
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Chat API is running' });
+});
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: '*',
     methods: ['GET', 'POST']
-  }
+  },
+  // Vercel friendly socket.io options
+  transports: ['websocket', 'polling']
 });
 
-// MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/chat-o-friend';
-mongoose.connect(MONGODB_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
-
 // In-memory user storage for real-time (will reset on server restart)
-// In a real app, you might use Redis or persistent DB for this.
 const users = new Map();
 
 io.on('connection', (socket) => {
@@ -71,7 +70,13 @@ io.on('connection', (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Only start the server if we're not in a serverless environment (e.g., local dev)
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3000;
+  server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+// Export for Vercel
+module.exports = app;

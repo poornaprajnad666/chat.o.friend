@@ -6,10 +6,12 @@
       <svg width="12" height="12" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
     </div>
     <div class="dropdown-menu">
-      <div *ngFor="let t of themes" class="dropdown-item" (click)="themeService.setTheme(t)">
+      @for(t of themes; track $index){
+      <div class="dropdown-item" (click)="themeService.setTheme(t)">
         <span class="theme-circle" [ngClass]="t"></span>
         {{ t | titlecase }}
       </div>
+    }
     </div>
   </div>
 </div>
@@ -21,11 +23,13 @@
       <span class="user-count">{{ users().length }} online</span>
     </div>
     <ul class="user-list">
-      <li *ngFor="let user of users()" class="user-item">
+      @for(user of users(); track $index){
+      <li class="user-item">
         <div class="avatar">{{ user.name.charAt(0).toUpperCase() }}</div>
         <span class="user-name">{{ user.name }}</span>
         <span class="status-indicator"></span>
       </li>
+    }
     </ul>
     <div class="sidebar-footer">
         <button class="logout-btn" (click)="logout()">Leave Chat</button>

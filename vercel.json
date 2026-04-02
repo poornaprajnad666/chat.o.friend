@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "apps/api/src/main.js"
+    },
+    {
+      "source": "/socket.io/(.*)",
+      "destination": "apps/api/src/main.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "apps/frontend/dist/frontend/browser/$1"
+    }
+  ],
+  "functions": {
+    "apps/api/src/main.js": {
+      "runtime": "vercel-node@latest",
+      "includeFiles": "apps/api/src/**"
+    }
+  }
+}

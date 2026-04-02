@@ -22,7 +22,9 @@ export class ChatService {
   public currentUser = signal<string | null>(null);
 
   constructor() {
-    this.socket = io('http://localhost:3000');
+    const isProd = window.location.hostname !== 'localhost';
+    const socketUrl = isProd ? window.location.origin : 'http://localhost:3000';
+    this.socket = io(socketUrl);
 
     this.socket.on('userList', (userList: User[]) => {
       this.users.set(userList);
